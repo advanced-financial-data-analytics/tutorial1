@@ -12,8 +12,8 @@ editor: visual
 
 ```{r setup, include=FALSE}
 # Source setup and data loading scripts
-source("setup.R")
-source("load_data.R")
+source("setup.r")
+source("load_data.r")
 
 # Additional tutorial-specific setup
 knitr::opts_chunk$set(
