@@ -1,0 +1,226 @@
+---
+title: "HW 01 - R, Posit, Git, and GitHub"
+subtitle: "Meet the toolkit"
+output: 
+  html:
+    css: ../hw.css
+link-citations: yes
+editor: visual
+  markdown: 
+    wrap: sentence
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+  eval = FALSE,
+  out.width = "80%",
+  fig.asp = 0.618,
+  fig.width = 10
+)
+library(tidyverse)
+library(rosdata)
+library(ggrepel)
+```
+
+The goal of this assignment is to introduce you to R, Posit, Git, and GitHub, which you'll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.
+
+# Getting started
+
+## Prerequisites {data-link="Prerequisites"}
+
+This assignment assumes that you have reviewed the lectures titled "02-Meet the toolkit". If you haven't yet done so, please pause and complete those before continuing.
+
+## Terminology
+
+We've already thrown around a few new terms, so let's define them before we proceed.
+
+-   **R:** Name of the programming language we will be using throughout the course.
+
+-   **Posit:** An integrated development environment for R. In other words, a convenient interface for writing and running R code.
+
+-   **Git:** (Optional) A version control system.
+
+-   **GitHub:** (Optional) A web platform for hosting version controlled files and facilitating collaboration among users.
+
+-   **Repository:** A Git repository contains all of your project's files and stores each file's revision history. It's common to refer to a repository as a repo.
+
+    -   In this course, each assignment you work on will be contained in a Git repo.
+    -   For individual assignments, only you will have access to the repo. For team assignments, all team members will have access to a single repo where they work collaboratively.
+    -   All repos associated with this course are housed in the course GitHub organization. The organization is set up such that students can only see repos they have access to, but the course staff can see all of them.
+
+## Starting slow
+
+As the course progresses, you are encouraged to explore beyond what the assignments dictate; a willingness to experiment will make you a much better programmer! Before we get to that stage, however, you need to build some basic fluency in R. First, we will explore the fundamental building blocks of these tools.
+
+Before you can get started with the analysis, you need to:
+
+-   Be a member of the course Posit Cloud space (See Canvas Announcements for details)
+
+Optional but recommended:
+-   Have a GitHub account 
+-   Learn basics of version control with Git
+
+# Workflow
+
+You can complete this assignment entirely within Posit Cloud. If you'd like to use version control:
+
+- You can create a new GitHub repository for your work
+- Clone it to Posit Cloud
+- Make commits and push changes as you work
+
+If you're not using Git/GitHub, simply create a new project in Posit Cloud and save your work regularly.
+
+# Hello RStudio!
+
+RStudio is comprised of four panes.
+
+![](img/rstudio-anatomy.png)
+
+-   On the bottom left is the Console, this is where you can write code that will be evaluated. Try typing `2 + 2` here and hit enter, what do you get?
+-   On the bottom right is the Files pane, as well as other panes that will come handy as we start our analysis.
+-   If you click on a file, it will open in the editor, on the top left pane.
+-   Finally, the top right pane shows your Environment. If you define a variable it would show up there. Try typing `x <- 2` in the Console and hit enter, what do you get in the **Environment** pane? Importantly, this pane is also where the **Git** interface lives. We will be using that regularly throughout this assignment.
+
+# Warm up
+
+Before we introduce the data, let's warm up with some simple exercises.
+
+::: callout-note
+The top portion of your Quarto file (between the three dashed lines) is called **YAML**. It stands for "YAML Ain't Markup Language". It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.
+:::
+
+## Update the YAML
+
+Open the Quarto (Rmd) file in your project, change the author name to your name, and render the document.
+
+![](img/yaml-raw-to-rendered.png)
+
+# Packages
+
+R is an open-source language, and developers contribute functionality to R via packages. In this assignment we will use the following packages:
+
+-   **tidyverse**: a collection of packages for doing data analysis in a "tidy" way
+-   **rosdata**: a package that contains the datasets from one of the course textbooks called **Regression and other stories** (See Canvas for link to book)
+
+We use the `library()` function to load packages. In your Quarto document you should see an R chunk labelled `load-packages` which has the necessary code for loading both packages. You should also load these packages in your Console, which you can do by sending the code to your Console by clicking on the **Run Current Chunk** icon (green arrow pointing right icon).
+
+![](img/load-packages-chunk.png)
+
+Note that these packages also get loaded in your Quarto environment when you **Render** your Quarto document.
+
+# Data
+
+We will be using financial market data from the `fin7028_dat.RData` file which contains daily stock prices and returns for several companies.
+
+# Exercises
+
+## Basic Return Calculations
+
+1. Using the provided financial data:
+   - Calculate both simple and log returns for Glencore stock
+   - Create a time series plot comparing both types of returns
+   - Explain why the two measures are similar for daily returns but may differ for longer horizons
+
+```{r}
+# Example code structure
+glen %>%
+  mutate(
+    simple_return = (price - lag(price)) / lag(price),
+    log_return = log(price/lag(price))
+  ) %>%
+  ggplot(aes(x = date)) +
+  geom_line(aes(y = simple_return, color = "Simple")) +
+  geom_line(aes(y = log_return, color = "Log")) +
+  theme_minimal() +
+  labs(title = "Comparison of Simple vs Log Returns",
+       y = "Return",
+       color = "Return Type")
+```
+
+## Multi-Period Returns
+
+2. For Glencore stock:
+   - Calculate weekly returns using both simple and continuous compounding
+   - Demonstrate the additive property of log returns by comparing:
+     a) The sum of daily log returns
+     b) The directly calculated weekly log return
+   - Discuss any differences you observe
+
+```{r}
+# Code template for multi-period returns
+# Weekly simple return = (P_t - P_{t-5})/P_{t-5}
+# Weekly log return = log(P_t/P_{t-5})
+```
+
+## Portfolio Analysis
+
+3. Create a two-asset portfolio using Glencore and another stock:
+   - Assign weights of 60% and 40% to the assets
+   - Calculate portfolio returns using both simple and log returns
+   - Compare the accuracy of the log return approximation for portfolio returns
+   - Explain why simple returns are preferred for portfolio calculations
+
+## Excess Returns and Performance
+
+4. Using the FTSE 350 as the benchmark:
+   - Calculate excess returns for your chosen stock
+   - Create a visualization showing:
+     a) The stock's returns
+     b) The benchmark returns
+     c) The excess returns
+   - Calculate and interpret the tracking error
+
+## Statistical Properties
+
+5. Analyze the distributional properties of the returns:
+   - Create histograms of daily returns
+   - Calculate and interpret:
+     a) Skewness
+     b) Kurtosis
+     c) Jarque-Bera test for normality
+   - What do these results tell us about the nature of financial returns?
+
+```{r}
+# Example code for statistical analysis
+returns_stats <- glen %>%
+  summarise(
+    mean_return = mean(log_return, na.rm = TRUE),
+    std_dev = sd(log_return, na.rm = TRUE),
+    skewness = moments::skewness(log_return, na.rm = TRUE),
+    kurtosis = moments::kurtosis(log_return, na.rm = TRUE)
+  )
+```
+
+## Volatility Analysis
+
+6. Examine volatility clustering in the returns:
+   - Create a plot of absolute returns
+   - Calculate rolling 30-day volatility
+   - Test for ARCH effects in the return series
+   - What does this tell us about the time-varying nature of risk?
+
+# Submission Guidelines
+
+- Your analysis should include both code and written explanations
+- All visualizations should be properly labeled with titles and axes
+- Include your interpretation of the results in the context of financial markets
+- Remember to handle missing values appropriately in your calculations
+
+::: callout-note
+Pay particular attention to the assumptions underlying each return calculation method and their implications for financial analysis.
+:::
+
+# Warm-up Exercises
+
+Before diving into the main exercises, let's practice some basic R operations that will be useful for financial data analysis:
+
+1. Load and inspect the data structure
+2. Handle any missing values appropriately
+3. Create basic time series plots
+4. Calculate summary statistics
+
+These skills will be essential for completing the main exercises.
+
+```{r data.viewer, echo = FALSE, eval = TRUE, fig.align = "left"}
+knitr::include_graphics("img/view-data.png")
+```

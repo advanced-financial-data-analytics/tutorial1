@@ -1,0 +1,87 @@
+---
+title: "Tutorial01 - Asset Returns"
+subtitle: "Understanding Financial Returns"
+output: 
+  html:
+    css: ../hw.css
+link-citations: true
+editor: visual
+markdown: 
+  wrap: sentence
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(
+  eval = FALSE,
+  out.width = "80%",
+  fig.asp = 0.618,
+  fig.width = 10
+)
+library(tidyverse)
+library(moments) # for skewness and kurtosis
+library(tseries) # for financial time series functions
+```
+
+# Learning Outcomes
+
+By the end of this tutorial, you will be able to:
+
+- Calculate and interpret simple and logarithmic returns
+- Understand the differences between various types of returns
+- Analyze the statistical properties of financial returns
+- Create basic portfolio return calculations
+- Visualize and interpret financial time series data
+
+# Prerequisites
+
+This tutorial assumes you have:
+- Basic knowledge of R programming
+- Understanding of basic statistical concepts
+- Familiarity with the tidyverse package
+- Access to the provided financial dataset
+
+# Getting Started
+
+## Data Loading
+
+We'll be working with financial market data stored in `fin7028_dat.RData`. This dataset contains:
+- Daily stock prices
+- Return calculations
+- Market index data
+- Trading volumes
+
+```{r load-data}
+load("fin7028_dat.RData")
+```
+
+## Key Concepts
+
+Before we dive into the analysis, let's review some key concepts:
+
+- **Simple Returns**: Percentage change in price
+- **Log Returns**: Natural logarithm of price ratios
+- **Portfolio Returns**: Weighted combination of asset returns
+- **Excess Returns**: Return above a benchmark
+- **Volatility**: Measure of return variation
+
+
+# Additional Resources
+
+- Recommended readings on financial returns
+- Links to relevant documentation
+- References for statistical concepts used
+
+# Tips for Success
+
+- Always check for missing values in financial data
+- Pay attention to time series aspects of the data
+- Consider the implications of different return calculations
+- Document your analysis clearly
+- Interpret results in financial context
+
+::: callout-note
+Remember that financial returns often exhibit specific characteristics like:
+- Non-normal distributions
+- Volatility clustering
+- Time-varying relationships
+:::
