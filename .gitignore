@@ -1,4 +1,30 @@
-.Rproj.user
+# R specific files
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+*.Rproj
+
+# Quarto specific files
+/.quarto/
+*_files/
+*_cache/
+*.html
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Output files
+*.pdf
+*.docx
+*.log
+
+# Data files (uncomment if you don't want to track data)
+# *.csv
+# *.xlsx
+# *.RData
+
+# Temporary files
+*.tmp
+*~
