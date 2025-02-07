@@ -1,6 +1,6 @@
 # Asset Returns Tutorial
 
-The goal of this tutorial is to introduce you to the fundamental concepts of asset returns in financial analysis using R. You'll learn how to calculate, analyze, and interpret different types of financial returns while building practical skills in R programming and data visualization.
+The goal  of this tutorial is to introduce you to the fundamental concepts of asset returns in financial analysis using R. You'll learn how to calculate, analyze, and interpret different types of financial returns while building practical skills in R programming and data visualization.
 
 ## Learning Outcomes
 
