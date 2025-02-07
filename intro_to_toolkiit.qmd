@@ -1,5 +1,5 @@
 ---
-title: "HW 01 - Introduction to Financial Returns"
+title: "Tutorial 1- Introduction to Financial Returns"
 subtitle: "Understanding Return Calculations and Properties"
 output: 
   html:
@@ -24,13 +24,43 @@ knitr::opts_chunk$set(
 )
 ```
 
-The goal of this assignment is to introduce you to R, Posit, Git, and GitHub, which you'll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.
+The goal of this assignment is to introduce you to financial return calculations and their properties, while working with real market data in R. You'll learn to calculate and analyze different types of returns, understand their statistical properties, and explore basic portfolio analysis concepts.
 
 # Getting started
 
 ## Prerequisites {data-link="Prerequisites"}
 
-This assignment assumes that you have reviewed the lectures titled "02-Meet the toolkit". If you haven't yet done so, please pause and complete those before continuing.
+This assignment assumes that you have a basic understanding of financial markets and are familiar with R programming fundamentals. If you need to refresh your R skills, please review the "Introduction to R" materials before continuing.
+
+## Key Concepts
+
+We'll be working with several important financial concepts throughout this assignment:
+
+-   **Simple Returns:** The basic measure of price changes relative to initial investment.
+
+-   **Log Returns:** Also known as continuous compound returns, useful for multi-period analysis.
+
+-   **Portfolio Returns:** Weighted combinations of individual asset returns.
+
+-   **Excess Returns:** Asset returns in excess of a benchmark return.
+
+-   **Volatility:** A measure of return variability and risk.
+
+## Required Packages
+
+For this analysis, we will use the following R packages:
+
+-   **tidyverse**: for data manipulation and visualization
+-   **moments**: for calculating statistical moments (skewness, kurtosis)
+-   **tseries**: for time series analysis and financial calculations
+
+We use the `library()` function to load packages. The necessary code is provided in the `load-packages` chunk below:
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(moments)
+library(tseries)
+```
 
 ## Terminology
 
@@ -62,72 +92,29 @@ Optional but recommended:
 -   Have a GitHub account 
 -   Learn basics of version control with Git
 
-# Workflow
+# Working with Financial Data
 
-You can complete this assignment entirely within Posit Cloud. If you'd like to use version control:
+## Data Description
 
-- You can create a new GitHub repository for your work
-- Clone it to Posit Cloud
-- Make commits and push changes as you work
+We will be working with financial market data from the `fin7028_dat.RData` file, which contains:
+- Daily stock prices and returns for several companies
+- Market benchmark data (FTSE 350)
+- Risk-free rate data
 
-If you're not using Git/GitHub, simply create a new project in Posit Cloud and save your work regularly.
+## Data Preparation
 
-# Hello RStudio!
-
-RStudio is comprised of four panes.
-
-![](img/rstudio-anatomy.png)
-
--   On the bottom left is the Console, this is where you can write code that will be evaluated. Try typing `2 + 2` here and hit enter, what do you get?
--   On the bottom right is the Files pane, as well as other panes that will come handy as we start our analysis.
--   If you click on a file, it will open in the editor, on the top left pane.
--   Finally, the top right pane shows your Environment. If you define a variable it would show up there. Try typing `x <- 2` in the Console and hit enter, what do you get in the **Environment** pane? Importantly, this pane is also where the **Git** interface lives. We will be using that regularly throughout this assignment.
-
-# Warm up
-
-Before we introduce the data, let's warm up with some simple exercises.
-
-::: callout-note
-The top portion of your Quarto file (between the three dashed lines) is called **YAML**. It stands for "YAML Ain't Markup Language". It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.
-:::
-
-## Update the YAML
-
-Open the Quarto (Rmd) file in your project, change the author name to your name, and render the document.
-
-![](img/yaml-raw-to-rendered.png)
-
-# Packages
-
-R is an open-source language, and developers contribute functionality to R via packages. In this assignment we will use the following packages:
-
--   **tidyverse**: a collection of packages for doing data analysis in a "tidy" way
--   **rosdata**: a package that contains the datasets from one of the course textbooks called **Regression and other stories** (See Canvas for link to book)
-
-We use the `library()` function to load packages. In your Quarto document you should see an R chunk labelled `load-packages` which has the necessary code for loading both packages. You should also load these packages in your Console, which you can do by sending the code to your Console by clicking on the **Run Current Chunk** icon (green arrow pointing right icon).
-
-![](img/load-packages-chunk.png)
-
-Note that these packages also get loaded in your Quarto environment when you **Render** your Quarto document.
-
-# Data
-
-We will be using financial market data from the `fin7028_dat.RData` file which contains daily stock prices and returns for several companies.
-
-
-# Warm-up Exercises
-
-Before diving into the main exercises, let's practice some basic R operations that will be useful for financial data analysis:
+Before diving into the main exercises, let's ensure our data is properly prepared:
 
 1. Load and inspect the data structure
 2. Handle any missing values appropriately
 3. Create basic time series plots
 4. Calculate summary statistics
 
-These skills will be essential for completing the main exercises.
+These preparatory steps are essential for reliable financial analysis.
 
-```{r data.viewer, echo = FALSE, eval = TRUE, fig.align = "left"}
-knitr::include_graphics("img/view-data.png")
+```{r data-preview}
+# Example of data structure
+glimpse(glen)  # Glencore stock data
 ```
 
 # Exercises
