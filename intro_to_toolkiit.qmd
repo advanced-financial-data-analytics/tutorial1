@@ -1,6 +1,6 @@
 ---
-title: "HW 01 - R, Posit, Git, and GitHub"
-subtitle: "Meet the toolkit"
+title: "HW 01 - Introduction to Financial Returns"
+subtitle: "Understanding Return Calculations and Properties"
 output: 
   html:
     css: ../hw.css
@@ -9,7 +9,6 @@ editor: visual
   markdown: 
     wrap: sentence
 ---
-
 ```{r setup, include=FALSE}
 # Source setup and data loading scripts
 source("setup.r")
@@ -115,6 +114,22 @@ Note that these packages also get loaded in your Quarto environment when you **R
 
 We will be using financial market data from the `fin7028_dat.RData` file which contains daily stock prices and returns for several companies.
 
+
+# Warm-up Exercises
+
+Before diving into the main exercises, let's practice some basic R operations that will be useful for financial data analysis:
+
+1. Load and inspect the data structure
+2. Handle any missing values appropriately
+3. Create basic time series plots
+4. Calculate summary statistics
+
+These skills will be essential for completing the main exercises.
+
+```{r data.viewer, echo = FALSE, eval = TRUE, fig.align = "left"}
+knitr::include_graphics("img/view-data.png")
+```
+
 # Exercises
 
 ## Basic Return Calculations
@@ -194,7 +209,7 @@ returns_stats <- glen %>%
   )
 ```
 
-## Volatility Analysis
+## HOMEWORK: Volatility Analysis 
 
 6. Examine volatility clustering in the returns:
    - Create a plot of absolute returns
@@ -212,18 +227,3 @@ returns_stats <- glen %>%
 ::: callout-note
 Pay particular attention to the assumptions underlying each return calculation method and their implications for financial analysis.
 :::
-
-# Warm-up Exercises
-
-Before diving into the main exercises, let's practice some basic R operations that will be useful for financial data analysis:
-
-1. Load and inspect the data structure
-2. Handle any missing values appropriately
-3. Create basic time series plots
-4. Calculate summary statistics
-
-These skills will be essential for completing the main exercises.
-
-```{r data.viewer, echo = FALSE, eval = TRUE, fig.align = "left"}
-knitr::include_graphics("img/view-data.png")
-```
