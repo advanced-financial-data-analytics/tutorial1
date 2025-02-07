@@ -10,16 +10,19 @@ editor: visual
     wrap: sentence
 ---
 
-```{r include = FALSE}
+```{r setup, include=FALSE}
+# Source setup and data loading scripts
+source("setup.R")
+source("load_data.R")
+
+# Additional tutorial-specific setup
 knitr::opts_chunk$set(
-  eval = FALSE,
-  out.width = "80%",
-  fig.asp = 0.618,
-  fig.width = 10
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 10,
+  fig.height = 6
 )
-library(tidyverse)
-library(rosdata)
-library(ggrepel)
 ```
 
 The goal of this assignment is to introduce you to R, Posit, Git, and GitHub, which you'll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.

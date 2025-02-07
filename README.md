@@ -1,33 +1,103 @@
->The goal of this homework assignment is to introduce you to R, Posit, and Quartio, which you'll be using throughout the course both to learn the data science concepts discussed in the course and to analyze real data and come to informed conclusions.
+# Asset Returns Tutorial
 
-# Learning outcome
+The goal of this tutorial is to introduce you to the fundamental concepts of asset returns in financial analysis using R. You'll learn how to calculate, analyze, and interpret different types of financial returns while building practical skills in R programming and data visualization.
 
-- Back to use R
-- Introduction to Posit
-- Introduction to Quarto
+## Learning Outcomes
 
-# Getting started
+After completing this tutorial, you will be able to:
+- Calculate and interpret simple and logarithmic returns
+- Analyze the statistical properties of financial returns
+- Create basic portfolio return calculations
+- Visualize and interpret financial time series data
 
 ## Prerequisites
 
-This assignment assumes that you have reviewed the lectures titled "02-Meet the toolkit". If you haven't yet done so, please pause and complete the following before continuing.
+This tutorial assumes that you have:
+- Basic knowledge of R programming
+- Understanding of basic statistical concepts
+- Access to Posit Cloud
 
-## Terminology
+## Getting Started
 
-We've already thrown around a few new terms, so let's define them before we proceed.
+1. Run `setup.R` to install required packages
+2. Run `load_data.R` to ensure data is available
+3. Open `intro_to_toolkiit.qmd` to begin the tutorial
 
--   **R:** Name of the programming language we will be using throughout the course.
+The data loading script will:
+- Create a data directory if needed
+- Download/create data if not present
+- Load the data into your environment
 
--   **Posit:** An integrated development environment for R. In other words, a convenient interface for writing and running R code.
+### Setting Up Your Environment
 
-## Starting slow
+1. **Access Posit Cloud**
+   - Navigate to the course Posit Cloud space (See Canvas Announcements for details)
+   - Create a new project
 
-As the course progresses, you are encouraged to explore beyond what the assignments dictate; a willingness to experiment will make you a much better analyst! Before we get to that stage, however, you need to build some basic fluency in R. First, we will explore the fundamental building blocks of all of these tools.
+2. **Install Required Packages**
+   - Open the `setup.R` script
+   - Run the script to install and load all necessary packages
+   - This will install: tidyverse, moments, tseries, knitr, and rmarkdown
 
-Before you can get started with the analysis, you need to make sure you:
+### Working with the Tutorial
 
--   are a member of the course Posit Cloud space (See Canvas Announcements for details)
+The tutorial consists of several key files:
+- `intro_to_toolkiit.qmd`: Main tutorial document with exercises
+- `fin7028_dat.RData`: Financial dataset for analysis
+- `setup.R`: Script for installing required packages
 
-If you failed to confirm any of these, it means you have not yet completed the prerequisites for this assignment. Please go back to [Prerequisites] and complete them before continuing the assignment.
+## File Structure
+
+```
+asset-returns-tutorial/
+├── README.md
+├── setup.R
+├── load_data.R
+├── intro_to_toolkiit.qmd
+├── index.qmd
+└── data/
+    └── fin7028_dat.RData
+```
+
+## Working Through the Tutorial
+
+1. Start by running `setup.R` to ensure all required packages are installed
+2. Open `intro_to_toolkiit.qmd` in Posit Cloud
+3. Work through the exercises sequentially
+4. Render the document to see your results
+
+## Key Concepts Covered
+
+- Simple vs. logarithmic returns
+- Multi-period returns
+- Portfolio returns
+- Excess returns and performance metrics
+- Statistical properties of returns
+- Volatility analysis
+
+## Getting Help
+
+If you encounter any issues:
+1. Check the error messages in R
+2. Review the relevant section in the tutorial
+3. Consult the course discussion forum
+4. Contact the course teaching team
+
+## Additional Resources
+
+- Course textbook chapters on asset returns
+- R documentation for financial packages
+- Additional reading materials on Canvas
+
+## Submission Guidelines
+
+- Complete all exercises in the tutorial
+- Ensure your code runs without errors
+- Include clear explanations for your analysis
+- Follow good coding practices and documentation
+
+## Note on Data
+
+The financial data used in this tutorial (`fin7028_dat.RData`) contains daily stock prices and returns. Please ensure you handle the data appropriately and be aware of any missing values or other data quality issues.
 
 #
