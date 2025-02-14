@@ -2,7 +2,13 @@
 title: "Tutorial 1- Introduction to Financial Returns"
 subtitle: "Understanding Return Calculations and Properties"
 embed-resources: true
-format: html
+format:
+    html:
+        code-fold: true
+        toc: true
+        toc-depth: 3
+        code-tools:
+             source: https://github.com/advanced-financial-data-analytics/tutorial1
 editor: visual
 ---
 
